@@ -198,4 +198,43 @@ class Category
     {
         $this->slug = Jobeet::slugify($this->getName());
     }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $affiliates;
+
+
+    /**
+     * Add affiliate
+     *
+     * @param \Ens\JobeetBundle\Entity\Affiliate $affiliate
+     *
+     * @return Category
+     */
+    public function addAffiliate(\Ens\JobeetBundle\Entity\Affiliate $affiliate)
+    {
+        $this->affiliates[] = $affiliate;
+
+        return $this;
+    }
+
+    /**
+     * Remove affiliate
+     *
+     * @param \Ens\JobeetBundle\Entity\Affiliate $affiliate
+     */
+    public function removeAffiliate(\Ens\JobeetBundle\Entity\Affiliate $affiliate)
+    {
+        $this->affiliates->removeElement($affiliate);
+    }
+
+    /**
+     * Get affiliates
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getAffiliates()
+    {
+        return $this->affiliates;
+    }
 }

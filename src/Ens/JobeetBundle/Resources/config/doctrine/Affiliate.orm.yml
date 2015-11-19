@@ -1,6 +1,7 @@
 # src/Ens/JobeetBundle/Resources/config/doctrine/Affiliate.orm.yml
 Ens\JobeetBundle\Entity\Affiliate:
   type: entity
+  repositoryClass: Ens\JobeetBundle\Repository\AffiliateRepository
   table: affiliate
   id:
     id:
@@ -17,11 +18,22 @@ Ens\JobeetBundle\Entity\Affiliate:
     token:
       type: string
       length: 255
+    is_active:
+      type: boolean
+      nullable: true
     created_at:
       type: datetime
-  oneToMany:
-    category_affiliates:
-      targetEntity: CategoryAffiliate
-      mappedBy: affiliate
+  manyToMany:
+    categories:
+        targetEntity: Category
+        inversedBy: affiliates
+        joinTable:
+            name: category_affiliate
+            joinColumns:
+                affiliate_id:
+                    referencedColumnName: id
+            inverseJoinColumns:
+                category_id:
+                    referencedColumnName: id
   lifecycleCallbacks:
-    prePersist: [ setCreatedAtValue ]
+      prePersist: [ setCreatedAtValue , setTokenValue ]

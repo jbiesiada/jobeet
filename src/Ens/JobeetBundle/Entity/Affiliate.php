@@ -184,11 +184,106 @@ class Affiliate
     {
         return $this->category_affiliates;
     }
-    /**
-     * @ORM\PrePersist
-     */
+
     public function setCreatedAtValue()
     {
         $this->created_at = new \DateTime();
+    }
+    /**
+     * @var boolean
+     */
+    private $is_active;
+
+
+    /**
+     * Set isActive
+     *
+     * @param boolean $isActive
+     *
+     * @return Affiliate
+     */
+    public function setIsActive($isActive)
+    {
+        $this->is_active = $isActive;
+
+        return $this;
+    }
+
+    /**
+     * Get isActive
+     *
+     * @return boolean
+     */
+    public function getIsActive()
+    {
+        return $this->is_active;
+    }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $categories;
+
+
+    /**
+     * Add category
+     *
+     * @param \Ens\JobeetBundle\Entity\Category $category
+     *
+     * @return Affiliate
+     */
+    public function addCategory(\Ens\JobeetBundle\Entity\Category $category)
+    {
+        $this->categories[] = $category;
+
+        return $this;
+    }
+
+    /**
+     * Remove category
+     *
+     * @param \Ens\JobeetBundle\Entity\Category $category
+     */
+    public function removeCategory(\Ens\JobeetBundle\Entity\Category $category)
+    {
+        $this->categories->removeElement($category);
+    }
+
+    /**
+     * Get categories
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCategories()
+    {
+        return $this->categories;
+    }
+
+    public function setTokenValue()
+    {
+        if(!$this->getToken())
+        {
+            $token = sha1($this->getEmail().rand(11111, 99999));
+            $this->token = $token;
+        }
+        return $this;
+    }
+    public function activate()
+    {
+        if(!$this->getIsActive())
+        {
+            $this->setIsActive(true);
+        }
+
+        return $this->is_active;
+    }
+
+    public function deactivate()
+    {
+        if($this->getIsActive())
+        {
+            $this->setIsActive(false);
+        }
+
+        return $this->is_active;
     }
 }

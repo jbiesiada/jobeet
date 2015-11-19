@@ -19,9 +19,10 @@ Ens\JobeetBundle\Entity\Category:
     jobs:
       targetEntity: Job
       mappedBy: category
-    category_affiliates:
-      targetEntity: CategoryAffiliate
-      mappedBy: category
+  manyToMany:
+    affiliates:
+      targetEntity: Affiliate
+      mappedBy: categories
   lifecycleCallbacks:
     prePersist: [ setSlugValue ]
     preUpdate: [ setSlugValue ]
