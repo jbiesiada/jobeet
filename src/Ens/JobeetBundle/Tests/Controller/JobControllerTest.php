@@ -229,4 +229,16 @@ class JobControllerTest extends WebTestCase
 
         return $client;
     }
+    public function testSearch()
+    {
+        $client = static::createClient();
+
+        $crawler = $client->request('GET', '/job/search');
+        $this->assertEquals('Ens\JobeetBundle\Controller\JobController::searchAction', $client->getRequest()->attributes->get('_controller'));
+
+        $crawler = $client->request('GET', '/job/search?query=sens*', array(), array(), array(
+            'X-Requested-With' => 'XMLHttpRequest',
+        ));
+        $this->assertEquals($crawler->filter('tr')->count(),6);
+    }
 }
