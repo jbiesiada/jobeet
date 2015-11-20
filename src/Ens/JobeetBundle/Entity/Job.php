@@ -2,6 +2,9 @@
 
 namespace Ens\JobeetBundle\Entity;
 use Ens\JobeetBundle\Utils\Jobeet as Jobeet;
+use ZendSearch\Lucene\Lucene as Lucene;
+use ZendSearch\Lucene\Document as Document;
+use ZendSearch\Lucene\Document\Field as Field;
 /**
  * Job
  */
@@ -631,4 +634,62 @@ class Job
             'expires_at'   => $this->getCreatedAt()->format('Y-m-d H:i:s'),
         ); 
     } 
+    static public function getLuceneIndex()
+    {
+        if (file_exists($index = self::getLuceneIndexFile()))
+        {
+            return Lucene::open($index);
+        }
+        return Lucene::create($index);
+    }
+
+    static public function getLuceneIndexFile()
+    {
+        return __DIR__.'/../../../../web/data/job.index';
+    }  
+
+
+    public function updateLuceneIndex()
+    {
+        $index = self::getLuceneIndex();
+
+        // remove existing entries
+        foreach ($index->find('pk:'.$this->getId()) as $hit)
+        {
+          $index->delete($hit->id);
+        }
+
+        // don't index expired and non-activated jobs
+        if ($this->isExpired() || !$this->getIsActivated())
+        {
+          return;
+        }
+
+        $doc = new Document();
+
+        // store job primary key to identify it in the search results
+        $doc->addField(Field::Keyword('pk', $this->getId()));
+
+        // index job fields
+        $doc->addField(Field::UnStored('position', $this->getPosition(), 'utf-8'));
+        $doc->addField(Field::UnStored('company', $this->getCompany(), 'utf-8'));
+        $doc->addField(Field::UnStored('location', $this->getLocation(), 'utf-8'));
+        $doc->addField(Field::UnStored('description', $this->getDescription(), 'utf-8'));
+
+        // add job to the index
+        $index->addDocument($doc);
+        $index->commit();
+    }
+
+
+
+    public function deleteLuceneIndex()
+    {
+        $index = self::getLuceneIndex();
+
+        foreach ($index->find('pk:'.$this->getId()) as $hit)
+        {
+            $index->delete($hit->id);
+        }
+    }
 }

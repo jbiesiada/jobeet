@@ -3,6 +3,7 @@
  
 namespace Ens\JobeetBundle\Repository;
 use Doctrine\ORM\EntityRepository;
+use Ens\JobeetBundle\Entity\Job;
  
 class JobRepository extends EntityRepository
 {
@@ -104,5 +105,31 @@ class JobRepository extends EntityRepository
         }
      
         return $job;
-    }    
+    }
+
+    public function getForLuceneQuery($query)
+    {
+        $hits = Job::getLuceneIndex()->find($query);
+
+        $pks = array();
+        foreach ($hits as $hit)
+        {
+          $pks[] = $hit->pk;
+        }
+
+        if (empty($pks))
+        {
+          return array();
+        }
+
+        $q = $this->createQueryBuilder('j')
+            ->where('j.id IN (:pks)')
+            ->setParameter('pks', $pks)
+            ->andWhere('j.is_activated = :active')
+            ->setParameter('active', 1)
+            ->setMaxResults(20)
+            ->getQuery();
+
+        return $q->getResult();
+    }  
 }

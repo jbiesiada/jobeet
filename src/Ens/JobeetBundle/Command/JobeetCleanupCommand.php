@@ -22,6 +22,27 @@ class JobeetCleanupCommand extends ContainerAwareCommand {
 	{
 		$days = $input->getArgument('days');
 		$em = $this->getContainer()->get('doctrine')->getEntityManager();
+        // cleanup Lucene index
+        $index = Job::getLuceneIndex();
+
+        $q = $em->getRepository('IbwJobeetBundle:Job')->createQueryBuilder('j')
+          ->where('j.expires_at < :date')
+          ->setParameter('date',date('Y-m-d'))
+          ->getQuery();
+
+        $jobs = $q->getResult();
+        foreach ($jobs as $job)
+        {
+          if ($hit = $index->find('pk:'.$job->getId()))
+          {
+            $index->delete($hit->id);
+          }
+        }
+
+        $index->optimize();
+
+        $output->writeln('Cleaned up and optimized the job index');
+		
 		$nb = $em->getRepository('EnsJobeetBundle:Job')->cleanup($days);
 		$output->writeln(sprintf('Removed %d stale jobs', $nb));
 	}

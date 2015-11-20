@@ -46,3 +46,6 @@ ens_job_delete:
     pattern:  /{token}/delete
     defaults: { _controller: "EnsJobeetBundle:Job:delete" }
     requirements: { _method: post }
+ens_job_search:
+    pattern: /search
+    defaults: { _controller: "EnsJobeetBundle:Job:search" }

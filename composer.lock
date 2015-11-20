@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "0ae662f931275a760e5181b8023641b4",
-    "content-hash": "75c3b75a54254241313e20c9e04589c2",
+    "hash": "4fd2f6842ec506ca287739362b64a56b",
+    "content-hash": "62a155918694416fb2e5738422c8ab59",
     "packages": [
         {
             "name": "cocur/slugify",
@@ -945,6 +945,57 @@
                 "orm"
             ],
             "time": "2015-08-31 12:59:39"
+        },
+        {
+            "name": "egeloen/lucene-search-bundle",
+            "version": "1.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/egeloen/IvoryLuceneSearchBundle.git",
+                "reference": "2783b24f7be60bea7d8ab3bfacf09d52560627aa"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/egeloen/IvoryLuceneSearchBundle/zipball/2783b24f7be60bea7d8ab3bfacf09d52560627aa",
+                "reference": "2783b24f7be60bea7d8ab3bfacf09d52560627aa",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3",
+                "symfony/filesystem": "~2.0",
+                "symfony/framework-bundle": "~2.0",
+                "zendframework/zendsearch": "dev-master"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0",
+                "satooshi/php-coveralls": "~0.7@dev"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Ivory\\LuceneSearchBundle\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Eric GELOEN",
+                    "email": "geloen.eric@gmail.com"
+                }
+            ],
+            "description": "Provides a zend lucene search integration for your Symfony2 Project.",
+            "keywords": [
+                "lucene search"
+            ],
+            "time": "2014-11-08 13:33:47"
         },
         {
             "name": "incenteev/composer-parameter-handler",
@@ -2567,158 +2618,154 @@
             "time": "2015-11-05 12:49:06"
         },
         {
-            "name": "zf1/zend-exception",
-            "version": "1.12.11",
+            "name": "zendframework/zend-hydrator",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/zf1/zend-exception.git",
-                "reference": "ca30959d3e2f522f481a3d1459386acf1aa4ca74"
+                "url": "https://github.com/zendframework/zend-hydrator.git",
+                "reference": "f3ed8b833355140350bbed98d8a7b8b66875903f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zf1/zend-exception/zipball/ca30959d3e2f522f481a3d1459386acf1aa4ca74",
-                "reference": "ca30959d3e2f522f481a3d1459386acf1aa4ca74",
+                "url": "https://api.github.com/repos/zendframework/zend-hydrator/zipball/f3ed8b833355140350bbed98d8a7b8b66875903f",
+                "reference": "f3ed8b833355140350bbed98d8a7b8b66875903f",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.2.11"
+                "php": ">=5.5",
+                "zendframework/zend-stdlib": "^2.5.1"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0",
+                "squizlabs/php_codesniffer": "^2.0@dev",
+                "zendframework/zend-eventmanager": "^2.5.1",
+                "zendframework/zend-filter": "^2.5.1",
+                "zendframework/zend-inputfilter": "^2.5.1",
+                "zendframework/zend-serializer": "^2.5.1",
+                "zendframework/zend-servicemanager": "^2.5.1"
+            },
+            "suggest": {
+                "zendframework/zend-eventmanager": "^2.5.1, to support aggregate hydrator usage",
+                "zendframework/zend-filter": "^2.5.1, to support naming strategy hydrator usage",
+                "zendframework/zend-serializer": "^2.5.1, to use the SerializableStrategy",
+                "zendframework/zend-servicemanager": "^2.5.1, to support hydrator plugin manager usage"
             },
             "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev",
+                    "dev-develop": "1.1-dev"
+                }
+            },
             "autoload": {
-                "psr-0": {
-                    "Zend_Exception": "library/"
+                "psr-4": {
+                    "Zend\\Hydrator\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
-            "description": "Zend Framework 1 Exception package",
-            "homepage": "http://framework.zend.com/",
+            "homepage": "https://github.com/zendframework/zend-hydrator",
             "keywords": [
-                "ZF1",
-                "exception",
-                "framework",
-                "zend"
+                "hydrator",
+                "zf2"
             ],
-            "time": "2015-04-30 11:10:20"
+            "time": "2015-09-17 14:06:43"
         },
         {
-            "name": "zf1/zend-search",
-            "version": "1.12.11",
+            "name": "zendframework/zend-stdlib",
+            "version": "2.7.4",
             "source": {
                 "type": "git",
-                "url": "https://github.com/zf1/zend-search.git",
-                "reference": "c966e380667e02f83bf0806132e9cf392831930b"
+                "url": "https://github.com/zendframework/zend-stdlib.git",
+                "reference": "cae029346a33663b998507f94962eb27de060683"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zf1/zend-search/zipball/c966e380667e02f83bf0806132e9cf392831930b",
-                "reference": "c966e380667e02f83bf0806132e9cf392831930b",
+                "url": "https://api.github.com/repos/zendframework/zend-stdlib/zipball/cae029346a33663b998507f94962eb27de060683",
+                "reference": "cae029346a33663b998507f94962eb27de060683",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.2.11",
-                "zf1/zend-exception": "self.version"
+                "php": ">=5.5",
+                "zendframework/zend-hydrator": "~1.0"
+            },
+            "require-dev": {
+                "athletic/athletic": "~0.1",
+                "fabpot/php-cs-fixer": "1.7.*",
+                "phpunit/phpunit": "~4.0",
+                "zendframework/zend-config": "~2.5",
+                "zendframework/zend-eventmanager": "~2.5",
+                "zendframework/zend-filter": "~2.5",
+                "zendframework/zend-inputfilter": "~2.5",
+                "zendframework/zend-serializer": "~2.5",
+                "zendframework/zend-servicemanager": "~2.5"
+            },
+            "suggest": {
+                "zendframework/zend-eventmanager": "To support aggregate hydrator usage",
+                "zendframework/zend-filter": "To support naming strategy hydrator usage",
+                "zendframework/zend-serializer": "Zend\\Serializer component",
+                "zendframework/zend-servicemanager": "To support hydrator plugin manager usage"
             },
             "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.7-dev",
+                    "dev-develop": "2.8-dev"
+                }
+            },
             "autoload": {
-                "psr-0": {
-                    "Zend_Search": "library/"
+                "psr-4": {
+                    "Zend\\Stdlib\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
-            "description": "Zend Framework 1 Search package",
-            "homepage": "http://framework.zend.com/",
+            "homepage": "https://github.com/zendframework/zend-stdlib",
             "keywords": [
-                "ZF1",
-                "framework",
-                "search",
-                "zend"
+                "stdlib",
+                "zf2"
             ],
-            "time": "2015-04-30 11:08:53"
+            "time": "2015-10-15 15:57:32"
         },
         {
-            "name": "zf1/zend-search-lucene",
-            "version": "1.12.11",
+            "name": "zendframework/zendsearch",
+            "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/zf1/zend-search-lucene.git",
-                "reference": "6427a633388186ae855b2e6f41d5d0fbf4454dab"
+                "url": "https://github.com/zendframework/ZendSearch.git",
+                "reference": "c8de2508d3413bf9d701b40c1092c1ffbdd8fc63"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zf1/zend-search-lucene/zipball/6427a633388186ae855b2e6f41d5d0fbf4454dab",
-                "reference": "6427a633388186ae855b2e6f41d5d0fbf4454dab",
+                "url": "https://api.github.com/repos/zendframework/ZendSearch/zipball/c8de2508d3413bf9d701b40c1092c1ffbdd8fc63",
+                "reference": "c8de2508d3413bf9d701b40c1092c1ffbdd8fc63",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.2.11",
-                "zf1/zend-exception": "self.version",
-                "zf1/zend-search": "self.version",
-                "zf1/zend-xml": "self.version"
+                "php": ">=5.3.3",
+                "zendframework/zend-stdlib": "2.*"
             },
             "type": "library",
             "autoload": {
                 "psr-0": {
-                    "Zend_Search_Lucene": "library/"
+                    "ZendSearch": "library/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
-            "description": "Zend Framework 1 Search Lucene package",
-            "homepage": "http://framework.zend.com/",
+            "description": "a general purpose text search engine written entirely in PHP 5",
+            "homepage": "http://packages.zendframework.com/",
             "keywords": [
-                "ZF1",
-                "framework",
                 "lucene",
-                "search",
-                "zend"
+                "zf2"
             ],
-            "time": "2015-04-30 11:08:58"
-        },
-        {
-            "name": "zf1/zend-xml",
-            "version": "1.12.11",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/zf1/zend-xml.git",
-                "reference": "330ca342f69ad446b874158acc9b90dc43d9bbaa"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/zf1/zend-xml/zipball/330ca342f69ad446b874158acc9b90dc43d9bbaa",
-                "reference": "330ca342f69ad446b874158acc9b90dc43d9bbaa",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.2.11",
-                "zf1/zend-exception": "self.version"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "Zend_Xml": "library/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "description": "Zend Framework 1 Xml package",
-            "homepage": "http://framework.zend.com/",
-            "keywords": [
-                "ZF1",
-                "framework",
-                "xml",
-                "zend"
-            ],
-            "time": "2015-04-30 11:12:33"
+            "time": "2015-01-21 16:24:14"
         }
     ],
     "packages-dev": [],
@@ -2727,7 +2774,8 @@
     "stability-flags": {
         "doctrine/doctrine-fixtures-bundle": 20,
         "knplabs/knp-menu": 20,
-        "knplabs/knp-menu-bundle": 20
+        "knplabs/knp-menu-bundle": 20,
+        "zendframework/zendsearch": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
