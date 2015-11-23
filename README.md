@@ -1,10 +1,9 @@
-jobeet
+#jobeet
 =======
 
 
-Symfony 2 training project
+Symfony 2 training project it contains:
 
-it contains:
 	-categorized job advertisements,
 	-multiple users,
 	-admin panel
