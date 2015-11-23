@@ -2,7 +2,7 @@
 =======
 
 
-Symfony 2 training project it contains:
+Symfony 2 training project which contains:
 
 	-categorized job advertisements,
 	-multiple users,
